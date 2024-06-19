@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <script src="https://kit.fontawesome.com/867940aa1a.js" crossorigin="anonymous"></script>
+
+    <title> {% block title %}{{ project_name|default:"DjangoBango" }}{% endblock %} </title>
+    {% block page_styles %} {% endblock %}
+</head>
+<body>
+<!-- Main Code -->
+
+{% include 'includes/error.html' %}
+
+{% if request.user.is_authenticated %}
+    {% include 'includes/navbar.html' %}
+{% else %}
+    {% include 'includes/header.html' %}
+{% endif %}
+
+
+<!-- Main Content -->
+{% block content %} {% endblock %}
+{% block pagination %} {% endblock %}
+
+
+{% block page_js %} {% endblock %}
+
+<!-- End of Code -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

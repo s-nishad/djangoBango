@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Customer Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">Login Email:</dt>
+                            <dd class="col-sm-8">{{ customer.user.username }}</dd>
+
+                            <dt class="col-sm-4">First Name:</dt>
+                            <dd class="col-sm-8">{{ customer.user.first_name }}</dd>
+
+                            <dt class="col-sm-4">Last Name:</dt>
+                            <dd class="col-sm-8">{{ customer.user.last_name }}</dd>
+
+                            <dt class="col-sm-4">Contact:</dt>
+                            <dd class="col-sm-8">{{ customer.contact }}</dd>
+
+                            <dt class="col-sm-4">Company:</dt>
+                            <dd class="col-sm-8">{{ customer.company }}</dd>
+
+                            <dt class="col-sm-4">Company Email:</dt>
+                            <dd class="col-sm-8">{{ customer.email }}</dd>
+                        </dl>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="{% url 'user:customer_profile_update' customer.guid %}"
+                                   class="btn btn-primary">Edit</a>
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                    Delete
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete <span class="text-danger" >{{ customer.email }}</span> ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <a href="{% url 'user:customer_delete' customer.guid %}"
+                                                   class="btn btn-primary">Yes</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <a href="{% url 'order:create_order' customer.guid %}" class="btn btn-success">Create
+                                    Order</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

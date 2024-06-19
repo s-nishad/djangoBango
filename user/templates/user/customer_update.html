@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block title %} Customer {% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4"> Customer Information</h2>
+
+                    <form action="{% url 'user:customer_update' customer.guid %}" method="POST">
+                        {% csrf_token %}
+                        {{ customer_form | crispy }}
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">Update Customer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4"> User Information</h2>
+
+                    <form action="{% url 'user:user_update' customer.guid %}" method="POST">
+                        {% csrf_token %}
+                        {{ user_form | crispy }}
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">Update User</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

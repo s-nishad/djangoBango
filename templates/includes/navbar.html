@@ -1,0 +1,51 @@
+<nav id="navbar_top" class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home:home' %}">Django Bango</a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse me-75" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home:home' %}">Home</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center justify-content-start">
+
+                <div class="dropdown">
+                    <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                    >
+                        <img src="https://ui-avatars.com/api/?name={{ user.username }}&bold=true&background=036ffc&color=ffffff"
+                             class="rounded-circle" height="25"
+                             alt="User Avatar" loading="lazy"/>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item n_l" href="{% url 'user:my_profile' %}"><span
+                                class="bi bi-person-circle">Profile</span></a></li>
+                        <li><a class="dropdown-item n_l" href="{% url 'user:password_change' %}"><span
+                                class="bi bi-shield-lock">Change Password</span></a></li>
+                        <li>
+                            <hr class="dropdown-divider"/>
+                        </li>
+                        <li><a class="dropdown-item n_l" href="{% url 'user:logout' %}"><span
+                                class="bi bi-box-arrow-left">Logout</span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</nav>
